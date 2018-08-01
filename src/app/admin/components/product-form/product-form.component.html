@@ -1,0 +1,51 @@
+
+<div class="row">
+  <div class="col-md-6">
+    <form [formGroup]="myForm" (ngSubmit)="save(myForm.value)">
+      <div class="form-group">
+        <label for="title">Title</label>
+        <input [formControl]="titleControl" placeholder="Product name" name="title" id="title" type="text" class="form-control">
+        <div class="alert alert-danger" *ngIf="titleControl.touched && titleControl.invalid">
+          Title is required.
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="price">Price</label>
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text">£</span>
+          </div>
+          <input [formControl]="priceControl" placeholder="Price" name="price" id="price" type="number" class="form-control" required>
+        </div>
+        <div class="alert alert-danger" *ngIf="priceControl.touched && priceControl.invalid">
+          <div *ngIf="priceControl.errors['required']">Price is required.</div>
+          <div *ngIf="priceControl.errors['min']">Price should be 0 or higher.</div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="category">Category</label>
+        <select [formControl]="categoryControl" name="category" id="category" class="form-control">
+          <option value=""></option>
+          <option *ngFor="let category of categories$ | async" [value]="category.value">
+            {{ category.name }}
+          </option>
+        </select>
+        <div class="alert alert-danger" *ngIf="categoryControl.touched && categoryControl.invalid">
+          Category is required.
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="imageUrl">Image URL</label>
+        <input [formControl]="imageControl" placeholder="Image url" name="imageUrl" id="imageUrl" type="text" class="form-control">
+        <div class="alert alert-danger" *ngIf="imageControl.touched && imageControl.invalid">
+          Image URL is required.
+        </div>
+      </div>
+      <button class="btn btn-primary" type="submit">Save</button>
+      <button type="button" (click)="delete()" class="btn btn-danger">Delete</button>
+    </form>
+  </div>
+  <div class="col-md-6">
+    <app-product-card [product]="myForm.value" [show-actions]="false"></app-product-card>
+  </div>
+</div>

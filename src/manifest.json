@@ -1,0 +1,14 @@
+{
+  "name": "Test Shop",
+  "short_name": "TShop",
+  "description": "Basic shopping app",
+  "icons": [{
+    "src": "assets/icon-512.png",
+    "sizes": "512x512",
+    "type": "image/png"
+  }],
+  "start_url": "index.html",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#673ab7"
+}
