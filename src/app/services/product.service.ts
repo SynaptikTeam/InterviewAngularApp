@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
 export class ProductService {
   constructor(private http: HttpClient) { }
 
-  create(product) {
+  create() {
     return this.http.post('/api/products',   product);
   }
   getAll() {
