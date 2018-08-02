@@ -63,7 +63,6 @@ import { ProductFormComponent } from './admin/components/product-form/product-fo
     FormsModule,
     HttpClientModule,
     CustomFormsModule,
-    ReactiveFormsModule,
     ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [
